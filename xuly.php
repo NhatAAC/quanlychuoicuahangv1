@@ -1,8 +1,8 @@
 <?php
-$servername = "3.25.254.124";
+$servername = "localhost";
 $username = "root";
 $password = "";
-$database = "quanlychuoicuahang"
+$database = "quanlychuoicuahang";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);
@@ -15,16 +15,14 @@ echo "Connected successfully";
 // Lấy thông tin khách hàng và đơn hàng từ form
 $user_id = $_POST["user_id"];
 $create_order = $_POST["create_order"];
-$address = $_POST["address"];
+$address = '';
 $status = $_POST["status"];
-$id_branch = $_POST["id_branch"]
-$product_price = $_POST["gia_tien"]; 
-$product_quantity = $_POST["sl"];
-$price_total = $product_price * $product_quantity;
+$id_branch = $_POST["id_branch"];
+$price_total = $_POST["bill_tien"];
 
 
 // Tạo mới đơn hàng trong CSDL
-$sql = "INSERT INTO orders (user_id,create_order,address,status,price_total,id_branch) 
+$sql = "INSERT INTO oder (user_id,create_order,address,status,price_total,id_branch) 
         VALUES ('$user_id', '$create_order', '$address', '$status', '$price_total', '$id_branch')";
 
 if ($conn->query($sql) === TRUE) {
@@ -34,5 +32,5 @@ if ($conn->query($sql) === TRUE) {
 }
 
 // Đóng kết nối CSDL
-$conn->close();
+
 ?>
